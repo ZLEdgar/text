@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OC和JS交互</title>
+    <style>
+        /*css 初始化 */
+        html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin:0; padding:0; }
+        fieldset, img,input,button { border:none; padding:0;margin:0;outline-style:none; }
+        .w {
+            width: 375px;
+            margin: 0 auto;
+        }
+        body {
+            background-color: #efefef;
+        }
+        .main {
+            font-size: 16px;
+            padding:20px 10px 0px 10px;
+        }
+        .brief {
+            text-indent:2em;
+        }
+        .content {
+            margin-top: 20px;
+            text-align: center;
+            line-height: 30px;
+        }
+        .next {
+            position: fixed;
+            bottom: 0px;
+            height: 50px;
+            background-color: red;
+            left: 50%;
+            margin-left: -187px;
+            font: 500 20px/20px "宋体";
+            color: white;
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById("nextPage");
+            btn.onclick = function () {
+                window.webkit.messageHandlers.nextPage.postMessage({body: 'next page!'});
+            }
+            
+            function scaleH5(fontSize) {
+                var main = document.getElementById("fontChange");
+                var intFont = parseInt(fontSize);
+                main.style.fontSize = (16 + (intFont - 1) * 5) + "px";
+            }
+
+            scaleH5(1);
+        }
+    </script>
+</head>
+<body>
+    <div class="main w" id="fontChange">
+        <p class="brief">
+            往事如烟赠诗中有诗《为你写诗》：来诗情画意，听如烟说不一样的诗意人生。如烟也来为你的文章写个小诗。
+        </p>
+        <div class="content">
+            <p>《思家》</p>
+            <p class="poetry">挣钱养家走天涯，</p>
+            <p class="poetry">惦念家中枕边花。</p>
+            <p class="poetry">相思伴着空中月，</p>
+            <p class="poetry">照进梦中幸福家。</p>
+        </div>
+    </div>
+    <button class="next w" id="nextPage">下一页</button>
+</body>
+</html>
