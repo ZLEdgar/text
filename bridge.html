@@ -37,20 +37,7 @@
         }
 
     </style>
-    <script>
-        window.onload = function () {
-            var btn = document.getElementById("nextPage");
-            btn.onclick = function () {
-                window.webkit.messageHandlers.nextPage.postMessage({body: 'next page!'});
-            }
-            
-            function scaleH5(fontSize) {
-                var main = document.getElementById("fontChange");
-                var intFont = parseInt(fontSize);
-                main.style.fontSize = (16 + (intFont - 1) * 5) + "px";
-            }
-        }
-    </script>
+
 </head>
 <body>
     <div class="main w" id="fontChange">
@@ -66,5 +53,18 @@
         </div>
     </div>
     <button class="next w" id="nextPage">下一页</button>
+
+    <script>
+            var btn = document.getElementById("nextPage");
+            btn.onclick = function () {
+                window.webkit.messageHandlers.nextPage.postMessage({body: 'next page!'});
+            }
+
+            function scaleH5(fontSize) {
+                var main = document.getElementById("fontChange");
+                var intFont = parseInt(fontSize);
+                main.style.fontSize = (16 + (intFont - 1) * 5) + "px";
+            }
+    </script>
 </body>
 </html>
